@@ -1,5 +1,81 @@
-.nav-link.active {
-    color: #ff0000;
-    font-weight: bold;
-    background-color: #b8b779;
+:root {
+    --color-primary: #e2dec5;
+    --color-primary-dark: #42413b;
+    --color-text: rgb(128, 53, 53);
+    --color-text-light: #ca5c5c;
+    --color-border: rgb(128, 40, 40);
+    --font-main: 'Inter', sans-serif;
+
+}
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+}
+
+.header {
+    width: 100%;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border); /* Borda inferior */
+    position: sticky; /* header "gruda" no topo ao rola a página */
+    top: 0;
+    z-index: 100; /*garante que fique acima dos outros elementos */
+    
+
+}
+
+.header-container {
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza na página */
+    display: flex; /* Organiza os elementos lado a lado */
+    align-items: center; /*Centraliza verticalmente*/
+    justify-content: space-between; /* Logo, menu e botões ficam nas pontas */
+    gap: 20px; /*Espçamento entre as coisas */
+}
+
+/* LOGO */
+
+.logo img {
+    width: 100px;
+    object-fit: contain; /*Mantém a proporção da imagem */ 
+}
+
+.button {
+    display: flex;
+    flex-direction: column; /* Título em cima, subtítulo embaixo*/
+    color: var(--color-text);
+    background-color: var(--color-);
+    border: var(--color-border);
+}
+
+.logo-title {
+    font-size: 28px;
+    font-weight: 700; /*Negrito*/
+    color: var(--color-text);
+}
+
+.logo-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-text-light);
+}
+
+.nav-link {
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-text-light);
+
+}
+
+.input-field {
+    font-size: 12px;
+    font-family: var(--font-main);
+    border-radius: 3px;
+    border-color: var(--color-primary-dark);
 }
