@@ -1,21 +1,26 @@
-:root {
-    --color-primary: #e2dec5;
-    --color-primary-dark: #42413b;
-    --color-text: rgb(128, 53, 53);
-    --color-text-light: #ca5c5c;
-    --color-border: rgb(128, 40, 40);
-    --font-main: 'Inter', sans-serif;
+/* Variáveis Globais  (cores e fontes reutilizadas no CSS) */
 
+:root {
+    --color-primary: #9b4b40; /* Cor principal */
+    --color-primary-dark: #72362e; /* versão escura da página */
+    --color-text: #923333; /* Cor do texto principal */
+    --color-text-light: #ff0000; /* cor do texto secundária */
+    --color-border: #86740e; /* Cor principal da borda */
+    --color-bg: #d8d5bd; /* Cor principal do fundo */
+    --font-main: 'Lucida Console', "Courier New", monospace; /* Fonte de texto principal */
 }
 
+/* Reset básico: remove espaçamentos padrão do navegador */
+
 * {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
+    margin: 0; /* Espaçamento externo */
+    padding: 0; /* Espaçamento interno */
+    box-sizing: border-box; /* padding e border não aumentam o tamanho do elemento */
 }
 
 body {
-    font-family: var(--font-main);
+    font-family: var[--font-main]; /* Tipo da fonte */
+
 }
 
 .header {
@@ -31,7 +36,7 @@ body {
 
 .header-container {
     max-width: 1200px; /* Largura máxima do conteúdo */
-    margin: 0 auto; /* Centraliza na página */
+    margin: 10px; /* Centraliza na página */
     display: flex; /* Organiza os elementos lado a lado */
     align-items: center; /*Centraliza verticalmente*/
     justify-content: space-between; /* Logo, menu e botões ficam nas pontas */
@@ -40,42 +45,101 @@ body {
 
 /* LOGO */
 
-.logo img {
-    width: 100px;
+.logo-img {
+    width: 150px;
     object-fit: contain; /*Mantém a proporção da imagem */ 
 }
 
-.button {
+.logo-text {
     display: flex;
     flex-direction: column; /* Título em cima, subtítulo embaixo*/
-    color: var(--color-text);
-    background-color: var(--color-);
-    border: var(--color-border);
 }
 
 .logo-title {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700; /*Negrito*/
     color: var(--color-text);
+    font-family: var(--font-main);
 }
 
 .logo-subtitle {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
-    color: var(--color-text-light);
+    color: var(--color-primary-dark);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente */
+    gap: 36px; /* Espaço entre os itens */
 }
 
 .nav-link {
-    padding: 10px;
-    font-size: 12px;
-    font-weight: 400;
+    text-decoration: none; /* Remove a decoração padrão que vem no texto */
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: color 0.2s ease; /* Muda a cor suavemente */
+    margin: 10px;
+}
+
+.nav-link:hover {
     color: var(--color-text-light);
+}
+
+.nav-link.active {
+    color: var(--color-primary); /* Destaca o link da página atual */
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 
 }
 
+.button {
+    position: relative; /* Serve para posicionar o icone da lupa */
+    display: flex;
+    align-items: center;
+    
+}
+
 .input-field {
-    font-size: 12px;
     font-family: var(--font-main);
-    border-radius: 3px;
-    border-color: var(--color-primary-dark);
+    width: 220px;
+    padding: 10px 40px 10px 16px; /* Espaço extra a direita para caber o icone de pesquisa */
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;  /* Remove a borda azul padrão do navegador */
+
+}
+
+.input-field input:focus {
+    border-color: rgb(80, 104, 170);
+}
+
+.input-field input::placeholder {
+    color: var(--color-text-light);
+}
+
+.button {
+    font-family: var(--font-main);
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer; /* Mostra que é clicável*/
+    white-space: nowrap; /* Impede o texto do botão de quebrar linha */
+    margin: -12px;
+
+}
+
+.button:hover {
+    background-color: var(--color-primary-dark);
 }
