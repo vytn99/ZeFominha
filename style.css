@@ -1,63 +1,82 @@
-/* Variáveis Globais  (cores e fontes reutilizadas no CSS) */
+
+/* Variáveis Globais (cores e fontes reutilizadas no CSS) */
 
 :root {
-    --color-primary: #9b4b40; /* Cor principal */
-    --color-primary-dark: #72362e; /* versão escura da página */
-    --color-text: #923333; /* Cor do texto principal */
-    --color-text-light: #ff0000; /* cor do texto secundária */
-    --color-border: #86740e; /* Cor principal da borda */
-    --color-bg: #d8d5bd; /* Cor principal do fundo */
-    --font-main: 'Lucida Console', "Courier New", monospace; /* Fonte de texto principal */
+    --color-primary: #9b4b40;
+    --color-primary-dark: #72362e;
+    --color-text: #923333;
+    --color-text-light: #ff0000;
+    --color-border: #86740e;
+    --color-bg: #d8d5bd;
+    --font-main: 'Lucida Console', "Courier New", monospace;
 }
 
-/* Reset básico: remove espaçamentos padrão do navegador */
+/* Reset básico */
 
 * {
-    margin: 0; /* Espaçamento externo */
-    padding: 0; /* Espaçamento interno */
-    box-sizing: border-box; /* padding e border não aumentam o tamanho do elemento */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+/* Corpo da página */
 
 body {
-    font-family: var[--font-main]; /* Tipo da fonte */
-
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* TEMA ESCURO */
+
+body.escuro {
+    --color-primary: #72362e;
+    --color-primary-dark: #4a241f;
+    --color-text: #f2e8df;
+    --color-text-light: #ff9999;
+    --color-border: #665c35;
+    --color-bg: #222222;
+
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+/* Cabeçalho */
 
 .header {
     width: 100%;
     background-color: var(--color-bg);
-    border-bottom: 1px solid var(--color-border); /* Borda inferior */
-    position: sticky; /* header "gruda" no topo ao rola a página */
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
     top: 0;
-    z-index: 100; /*garante que fique acima dos outros elementos */
-    
-
+    z-index: 100;
 }
 
 .header-container {
-    max-width: 1200px; /* Largura máxima do conteúdo */
-    margin: 10px; /* Centraliza na página */
-    display: flex; /* Organiza os elementos lado a lado */
-    align-items: center; /*Centraliza verticalmente*/
-    justify-content: space-between; /* Logo, menu e botões ficam nas pontas */
-    gap: 20px; /*Espçamento entre as coisas */
+    max-width: 1200px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 /* LOGO */
 
 .logo-img {
     width: 150px;
-    object-fit: contain; /*Mantém a proporção da imagem */ 
+    object-fit: contain;
 }
 
 .logo-text {
     display: flex;
-    flex-direction: column; /* Título em cima, subtítulo embaixo*/
+    flex-direction: column;
 }
 
 .logo-title {
     font-size: 26px;
-    font-weight: 700; /*Negrito*/
+    font-weight: 700;
     color: var(--color-text);
     font-family: var(--font-main);
 }
@@ -68,18 +87,20 @@ body {
     color: var(--color-primary-dark);
 }
 
+/* NAVEGAÇÃO */
+
 .main-nav {
     display: flex;
-    align-items: center; /* Centraliza os itens verticalmente */
-    gap: 36px; /* Espaço entre os itens */
+    align-items: center;
+    gap: 36px;
 }
 
 .nav-link {
-    text-decoration: none; /* Remove a decoração padrão que vem no texto */
+    text-decoration: none;
     font-size: 14px;
     font-weight: 500;
     color: var(--color-text);
-    transition: color 0.2s ease; /* Muda a cor suavemente */
+    transition: color 0.2s ease;
     margin: 10px;
 }
 
@@ -88,42 +109,47 @@ body {
 }
 
 .nav-link.active {
-    color: var(--color-primary); /* Destaca o link da página atual */
+    color: var(--color-primary);
     font-weight: 600;
 }
+
+/* AÇÕES DO CABEÇALHO */
 
 .header-actions {
     display: flex;
     align-items: center;
     gap: 16px;
-
 }
 
+/* Campo de pesquisa */
+
 .button {
-    position: relative; /* Serve para posicionar o icone da lupa */
+    position: relative;
     display: flex;
     align-items: center;
-    
 }
 
 .input-field {
     font-family: var(--font-main);
     width: 220px;
-    padding: 10px 40px 10px 16px; /* Espaço extra a direita para caber o icone de pesquisa */
+    padding: 10px 40px 10px 16px;
     border: 1px solid var(--color-border);
     border-radius: 8px;
     font-size: 14px;
-    outline: none;  /* Remove a borda azul padrão do navegador */
-
+    outline: none;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
-.input-field input:focus {
+.input-field:focus {
     border-color: rgb(80, 104, 170);
 }
 
-.input-field input::placeholder {
+.input-field::placeholder {
     color: var(--color-text-light);
 }
+
+/* Botões */
 
 .button {
     font-family: var(--font-main);
@@ -134,12 +160,87 @@ body {
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
-    cursor: pointer; /* Mostra que é clicável*/
-    white-space: nowrap; /* Impede o texto do botão de quebrar linha */
-    margin: -12px;
-
+    cursor: pointer;
+    white-space: nowrap;
+    margin: 0;
+    transition: background-color 0.3s ease;
 }
 
 .button:hover {
     background-color: var(--color-primary-dark);
+}
+
+/* Botão do tema */
+
+#btn-tema {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    border: none;
+    background: none;
+}
+
+/* Menu hamburguer */
+
+.hamburguer {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+
+    .nav-base {
+        display: none;
+    }
+
+    .logo-title {
+        display: none;
+    }
+
+    .logo-subtitle {
+        display: none;
+    }
+
+    .nav-base.ativo {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        padding: 16px 24px;
+        gap: 16px;
+    }
+
+    .btn-primary {
+        display: none;
+    }
+
+    .hamburguer {
+        display: flex;
+    }
+
+    .button {
+        display: none;
+    }
+
+    /* Mantém o botão do tema visível no celular */
+    #btn-tema {
+        display: flex;
+        font-size: 12px;
+        padding: 8px 10px;
+        border: none;
+        background: none;
+        color: var(--color-text-light);
+    }
 }
