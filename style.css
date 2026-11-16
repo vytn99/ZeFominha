@@ -1,5 +1,4 @@
-
-/* Variáveis Globais (cores e fontes reutilizadas no CSS) */
+/* ===== Variáveis (cores e fonte) ===== */
 
 :root {
     --color-primary: #9b4b40;
@@ -8,10 +7,13 @@
     --color-text-light: #ff0000;
     --color-border: #86740e;
     --color-bg: #d8d5bd;
+    --color-bg-soft: #cfcbb0;   /* fundo das seções alternadas */
+    --color-card: #e6e3cf;      /* fundo dos cards */
+    --color-footer: #72362e;
     --font-main: 'Lucida Console', "Courier New", monospace;
 }
 
-/* Reset básico */
+/* ===== Base ===== */
 
 * {
     margin: 0;
@@ -19,33 +21,41 @@
     box-sizing: border-box;
 }
 
-/* Corpo da página */
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: var(--font-main);
     background-color: var(--color-bg);
     color: var(--color-text);
+    line-height: 1.5;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* TEMA ESCURO */
-
-body.escuro {
-    --color-primary: #72362e;
-    --color-primary-dark: #4a241f;
-    --color-text: #f2e8df;
-    --color-text-light: #ff9999;
-    --color-border: #665c35;
-    --color-bg: #222222;
-
-    background-color: var(--color-bg);
-    color: var(--color-text);
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
-/* Cabeçalho */
+.section {
+    padding: 48px 0;
+}
+
+.section-soft {
+    background-color: var(--color-bg-soft);
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 24px;
+}
+
+
+/* ===== Header ===== */
 
 .header {
-    width: 100%;
     background-color: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
     position: sticky;
@@ -54,18 +64,24 @@ body.escuro {
 }
 
 .header-container {
-    max-width: 1200px;
-    margin: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 12px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
 }
 
-/* LOGO */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
 
 .logo-img {
-    width: 150px;
+    width: 56px;
     object-fit: contain;
 }
 
@@ -75,24 +91,19 @@ body.escuro {
 }
 
 .logo-title {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--color-text);
-    font-family: var(--font-main);
 }
 
 .logo-subtitle {
-    font-size: 12px;
-    font-weight: 400;
+    font-size: 11px;
     color: var(--color-primary-dark);
 }
 
-/* NAVEGAÇÃO */
-
-.main-nav {
+.nav-base {
     display: flex;
-    align-items: center;
-    gap: 36px;
+    gap: 24px;
 }
 
 .nav-link {
@@ -100,8 +111,6 @@ body.escuro {
     font-size: 14px;
     font-weight: 500;
     color: var(--color-text);
-    transition: color 0.2s ease;
-    margin: 10px;
 }
 
 .nav-link:hover {
@@ -109,47 +118,20 @@ body.escuro {
 }
 
 .nav-link.active {
-    color: var(--color-primary);
-    font-weight: 600;
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-text);
 }
 
-/* AÇÕES DO CABEÇALHO */
+/* Link de login do menu: só aparece no celular */
+.nav-login {
+    display: none;
+}
 
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 }
-
-/* Campo de pesquisa */
-
-.button {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.input-field {
-    font-family: var(--font-main);
-    width: 220px;
-    padding: 10px 40px 10px 16px;
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-}
-
-.input-field:focus {
-    border-color: rgb(80, 104, 170);
-}
-
-.input-field::placeholder {
-    color: var(--color-text-light);
-}
-
-/* Botões */
 
 .button {
     font-family: var(--font-main);
@@ -162,26 +144,28 @@ body.escuro {
     font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
-    margin: 0;
-    transition: background-color 0.3s ease;
 }
 
 .button:hover {
     background-color: var(--color-primary-dark);
 }
 
-/* Botão do tema */
-
-#btn-tema {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Campos de formulário (usados no login) */
+.input-field {
+    font-family: var(--font-main);
+    width: 220px;
+    padding: 10px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background-color: var(--color-bg);
     color: var(--color-text);
-    border: none;
-    background: none;
 }
 
-/* Menu hamburguer */
+.input-field::placeholder {
+    color: var(--color-text-light);
+}
 
 .hamburguer {
     display: none;
@@ -192,26 +176,219 @@ body.escuro {
     color: var(--color-text);
 }
 
-/* RESPONSIVIDADE */
+
+/* ===== Hero ===== */
+
+.hero {
+    padding: 56px 0;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+
+.hero-img {
+    width: 240px;
+    height: 240px;
+    object-fit: contain;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: var(--color-card);
+    border: 3px solid var(--color-border);
+}
+
+.hero-title {
+    font-size: 48px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.hero-text {
+    font-size: 18px;
+    max-width: 420px;
+    margin-bottom: 24px;
+}
+
+.btn-main {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 32px;
+    border-radius: 8px;
+}
+
+.btn-main:hover {
+    background-color: var(--color-primary-dark);
+}
+
+
+/* ===== Pratos ===== */
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.menu-card {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.menu-icon {
+    font-size: 32px;
+    color: var(--color-primary);
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.menu-card h3 {
+    font-size: 16px;
+}
+
+.menu-card p {
+    font-size: 13px;
+    flex-grow: 1;
+}
+
+.price {
+    font-size: 18px;
+}
+
+.see-all {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.see-all a {
+    color: var(--color-text);
+    font-weight: 700;
+}
+
+
+/* ===== Como pedir ===== */
+
+.steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.steps li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.steps h3 {
+    font-size: 16px;
+}
+
+.steps p {
+    font-size: 13px;
+}
+
+
+/* ===== Footer ===== */
+
+.footer {
+    background-color: var(--color-footer);
+    color: #fff;
+    padding: 24px 0;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.footer-copy {
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links a:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.social-links i {
+    color: #fff;
+    font-size: 16px;
+}
+
+
+/* ===== Celular ===== */
 
 @media (max-width: 768px) {
 
-    .nav-base {
-        display: none;
-    }
-
-    .logo-title {
-        display: none;
-    }
-
     .logo-subtitle {
+        display: none;
+    }
+
+    /* Menu vira uma gaveta (o script.js liga/desliga .ativo) */
+    .nav-base {
         display: none;
     }
 
     .nav-base.ativo {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         position: absolute;
         top: 100%;
         left: 0;
@@ -222,25 +399,50 @@ body.escuro {
         gap: 16px;
     }
 
-    .btn-primary {
-        display: none;
+    .nav-login {
+        display: block;
     }
 
     .hamburguer {
         display: flex;
     }
 
+    /* Esconde o botão Login do header, mantém o do tema */
     .button {
         display: none;
     }
 
-    /* Mantém o botão do tema visível no celular */
     #btn-tema {
         display: flex;
         font-size: 12px;
         padding: 8px 10px;
-        border: none;
-        background: none;
-        color: var(--color-text-light);
+    }
+
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 24px;
+    }
+
+    .hero-img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
     }
 }

@@ -1,32 +1,27 @@
-// 1. Seleciona os elementos que vamos usar
-const botaoMenu = document.querySelector("#btn-menu");
-const menu = document.querySelector(".nav-base");
+// Scripts da página inicial do Zé Fominha
 
-// Guardamos o texto original do botão para poder voltar depois
-const textoOriginal = botaoMenu.textContent;
+// Preenche o ano do rodapé automaticamente
+const anoEl = document.getElementById('ano');
+if (anoEl) {
+    anoEl.textContent = new Date().getFullYear();
+}
+// Carrossel: as setas rolam a lista de pratos
+const lista = document.getElementById('course-list');
+const btnPrev = document.getElementById('btn-prev');
+const btnNext = document.getElementById('btn-next');
 
-// 2. Escuta o evento de clique no botão
-botaoMenu.addEventListener("click", function () {
-  // 3. Alterna (liga/desliga) a classe "ativo" no menu
-  menu.classList.toggle("ativo"); 
-
-  // 4. Verifica se o menu ficou ativo para mudar o texto do botão
-  if (menu.classList.contains("ativo")) {
-    botaoMenu.textContent = "✕ Fechar";
-  } else {
-    botaoMenu.textContent = textoOriginal; // Volta para o texto que estava antes (ex: "☰ Menu")
-  }
-});
-
-
-const btnTema = document.querySelector("#btn-tema");
-
-btnTema.addEventListener("click", () => {
-    document.body.classList.toggle("escuro");
-
-    if (document.body.classList.contains("escuro")) {
-        btnTema.textContent = " Tema claro";
-    } else {
-        btnTema.textContent = " Tema escuro";
+if (lista && btnPrev && btnNext) {
+    // Quanto rolar por clique: a largura de um card + o espaço entre eles
+    function passo() {
+        const card = lista.querySelector('.course-card');
+        return card ? card.offsetWidth + 16 : 280;
     }
-});
+
+    btnNext.addEventListener('click', () => {
+        lista.scrollBy({ left: passo(), behavior: 'smooth' });
+    });
+
+    btnPrev.addEventListener('click', () => {
+        lista.scrollBy({ left: -passo(), behavior: 'smooth' });
+    });
+}

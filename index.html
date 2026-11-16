@@ -4,49 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zé Fominha</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <header class="header">
 
+    <!-- ---------------- HEADER ---------------- -->
+    <header class="header">
         <div class="header-container">
 
             <a href="index.html" class="logo">
-
-                <img src="./assets/zefominha.png" alt="Imagem do Zé Fominha" class="logo-img">
-
+                <img src="./assets/zefominha.png" alt="Logo do Zé Fominha" class="logo-img">
+                <span class="logo-text">
+                    <span class="logo-title">Zé Fominha</span>
+                    <span class="logo-subtitle">Deu fome? Pede no Zé Fominha que ela some!</span>
+                </span>
             </a>
 
-            <h1 class="logo-title">Zé Fominha</h1>
-            <p class="logo-subtitle">Deu fome? Pede no zé fominha que ela some!</p>
-
             <nav class="nav-base">
-
-                <a href="./cardapio.html" class="nav-link" active>Cardápio</a>
+                <a href="./index.html" class="nav-link active">Início</a>
+                <a href="./cardapio.html" class="nav-link">Cardápio</a>
                 <a href="./perfil.html" class="nav-link">Perfil</a>
                 <a href="./sobre.html" class="nav-link">Sobre</a>
-
+                <!-- Aparece só no celular -->
+                <a href="./login.html" class="nav-link nav-login">Login</a>
             </nav>
-            
-            <button onclick="window.location.href='login.html'" class="button">Login</button>
 
-            <button class="hamburguer" id="btn-menu">☰ Menu</button>
+            <div class="header-actions">
+                <button id="btn-tema" class="button" type="button">Tema escuro</button>
+                <button onclick="window.location.href='login.html'" class="button" type="button">Login</button>
+                <button class="hamburguer" id="btn-menu" type="button" aria-label="Abrir menu">☰</button>
+            </div>
+
         </div>
-
-        
-        <div class="header-actions">
-
-            <!-- Seus outros botões e campo de pesquisa -->
-
-            <button id="btn-tema" class="button" type="button">
-                 Tema escuro
-            </button>
-            
-        </div>
-
-
     </header>
 
+
+    <main>
+
+        <!-- ---------------- HERO ---------------- -->
+        <section class="hero">
+            <div class="container hero-container">
+
+                <img src="./assets/zefominha.png" alt="Mascote do Zé Fominha" class="hero-img">
+
+                <div class="hero-content">
+                    <h1 class="hero-title">Deu fome?</h1>
+                    <p class="hero-text">Pede no Zé Fominha que ela some! Lanches, pratos e sobremesas feitos na hora.</p>
+                    <a href="./cardapio.html" class="btn-main">Ver cardápio</a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ---------------- PRATOS ---------------- -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Mais pedidos</h2>
+
+                <!-- Os preços são exemplos: troque pelos valores reais -->
+                <div class="menu-grid">
+
+                    <article class="menu-card">
+                        <span class="material-symbols-outlined menu-icon" aria-hidden="true">lunch_dining</span>
+                        <h3>Hambúrguer da Casa</h3>
+                        <p>Pão macio, blend suculento, queijo e molho especial.</p>
+                        <strong class="price">R$ 24,90</strong>
+                    </article>
+
+                    <article class="menu-card">
+                        <span class="material-symbols-outlined menu-icon" aria-hidden="true">local_pizza</span>
+                        <h3>Pizza Fominha</h3>
+                        <p>Massa fininha, bastante queijo e cobertura generosa.</p>
+                        <strong class="price">R$ 39,90</strong>
+                    </article>
+
+                    <article class="menu-card">
+                        <span class="material-symbols-outlined menu-icon" aria-hidden="true">fastfood</span>
+                        <h3>Porção de Batata</h3>
+                        <p>Batata frita sequinha e crocante, perfeita pra dividir.</p>
+                        <strong class="price">R$ 18,90</strong>
+                    </article>
+
+                    <article class="menu-card">
+                        <span class="material-symbols-outlined menu-icon" aria-hidden="true">restaurant</span>
+                        <h3>Prato do Dia</h3>
+                        <p>Arroz, feijão, mistura e salada, almoço caseiro.</p>
+                        <strong class="price">R$ 22,00</strong>
+                    </article>
+
+                    <article class="menu-card">
+                        <span class="material-symbols-outlined menu-icon" aria-hidden="true">icecream</span>
+                        <h3>Açaí na Tigela</h3>
+                        <p>Açaí cremoso com granola, banana e leite condensado.</p>
+                        <strong class="price">R$ 16,50</strong>
+                    </article>
+
+                    <article class="menu-card">
+                        <span class="material-symbols-outlined menu-icon" aria-hidden="true">local_drink</span>
+                        <h3>Sucos e Bebidas</h3>
+                        <p>Sucos naturais e refrigerantes bem gelados.</p>
+                        <strong class="price">R$ 8,00</strong>
+                    </article>
+
+                </div>
+
+                <p class="see-all"><a href="./cardapio.html">Ver cardápio completo →</a></p>
+            </div>
+        </section>
+
+
+        <!-- ---------------- COMO PEDIR ---------------- -->
+        <section class="section section-soft">
+            <div class="container">
+                <h2 class="section-title">Como pedir</h2>
+
+                <ol class="steps">
+                    <li>
+                        <span class="step-number">1</span>
+                        <div>
+                            <h3>Escolha</h3>
+                            <p>Veja o cardápio e ache o que está com mais vontade.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-number">2</span>
+                        <div>
+                            <h3>Entre na sua conta</h3>
+                            <p>Faça login para confirmar o seu pedido.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-number">3</span>
+                        <div>
+                            <h3>Receba</h3>
+                            <p>É só esperar: chega rápido e ainda quentinho.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ---------------- FOOTER ---------------- -->
+    <footer class="footer">
+        <div class="container footer-container">
+
+            <p class="footer-copy">
+                &copy; <span id="ano"></span> Zé Fominha. Todos os direitos reservados.
+            </p>
+
+            <nav class="footer-links">
+                <a href="./cardapio.html">Cardápio</a>
+                <a href="./perfil.html">Perfil</a>
+                <a href="./sobre.html">Sobre</a>
+            </nav>
+
+            <div class="social-links">
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://wa.me/" target="_blank" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- script.js: tema escuro e menu hambúrguer (o seu) -->
     <script src="js/script.js"></script>
+    <!-- home.js: só preenche o ano do rodapé -->
+    <script src="js/home.js"></script>
 </body>
 </html>
